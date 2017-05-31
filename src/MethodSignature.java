@@ -30,4 +30,22 @@ public class MethodSignature {
   public String getReturnType() {
     return returnType;
   }
+
+  public boolean equals(MethodSignature ms) {
+    if (this.name.equals(ms.getName()) && this.returnType.equals(ms.getReturnType())
+            && this.arguments.size() == ms.getArguments().size()) {
+      for (int i = 0; i < this.arguments.size(); i++) {
+        if (!this.arguments.get(i).getType().equals(ms.getArguments().get(i).getType())) {
+          return false;
+        }
+      }
+      return true;
+    }
+    return false;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof MethodSignature && this.equals((MethodSignature) o);
+  }
 }
