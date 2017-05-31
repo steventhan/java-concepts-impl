@@ -17,4 +17,13 @@ public class Field {
   public String getName() {
     return this.name;
   }
+
+  public boolean equals(Field f) {
+    return this.type.equals(f.getType());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof Field && this.equals((Field) o);
+  }
 }
